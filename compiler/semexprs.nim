@@ -1774,6 +1774,7 @@ proc tryExpr(c: PContext, n: PNode, flags: TExprFlags = {}): PNode =
   let oldInGenericContext = c.inGenericContext
   let oldInUnrolledContext = c.inUnrolledContext
   let oldInGenericInst = c.inGenericInst
+  let oldInStaticContext = c.inStaticContext
   let oldProcCon = c.p
   c.generics = @[]
   var err: string
@@ -1788,6 +1789,7 @@ proc tryExpr(c: PContext, n: PNode, flags: TExprFlags = {}): PNode =
   c.inGenericContext = oldInGenericContext
   c.inUnrolledContext = oldInUnrolledContext
   c.inGenericInst = oldInGenericInst
+  c.inStaticContext = oldInStaticContext
   c.p = oldProcCon
   msgs.setInfoContextLen(oldContextLen)
   setLen(c.graph.owners, oldOwnerLen)
